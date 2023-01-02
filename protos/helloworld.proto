@@ -26,9 +26,11 @@ message HelloRequest {
 
 message HelloResponse {
   string message = 1;
-  bool snake_case = 2;
+  string message2 = 2;
+  double message3 = 3;
+  bool snake_case = 4;
 
-  google.protobuf.Struct param_struct = 3;
-  google.protobuf.ListValue param_list_value = 4;
-  google.protobuf.Value param_value = 5;
+  google.protobuf.Struct param_struct = 5;
+  google.protobuf.ListValue param_list_value = 6;
+  google.protobuf.Value param_value = 7;
 }

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import 'source-map-support/register';
 import { credentials, Metadata, ServiceError } from '@grpc/grpc-js';
 
@@ -49,7 +52,9 @@ async function example(): Promise<void> {
    * rpc sayHello with Promise
    */
   const sayHello = await clientService.sayHello(param);
-  logger.info('sayHello:', sayHello.message);
+  logger.info('sayHello:', sayHello);
+  const {message, message2, message3} = sayHello;
+  console.log(message, message2, message3);
   logger.info('sayHelloStruct:', sayHello.paramStruct);
   logger.info('sayHelloListValue:', sayHello.paramListValue);
   logger.info('sayHelloValue:', sayHello.paramValue);
@@ -87,6 +92,7 @@ function exampleStream(): void {
 
   const data: string[] = [];
   streamResponse.on('data', (res: HelloResponse) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     data.push(res.message);
   }).on('end', () => {
     logger.info('sayHelloStreamResponse:', data.join('\n'));

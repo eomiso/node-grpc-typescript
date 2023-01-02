@@ -34,6 +34,9 @@ class Greeter implements GreeterServer {
       ? `foo is ${metadataValue}`
       : `hello ${name}`;
 
+    res.message2 = "message2";
+    res.message3 = 10;
+
     const { paramStruct, paramListValue } = call.request;
     const paramValue = <unknown>call.request.paramValue;
     logger.info('sayHelloStruct:', paramStruct);
